@@ -15,6 +15,30 @@ public class App {
 
     System.out.println(player.getAccountType());
     System.out.println(player2.getAccountType());
-    
+
+    //Implementation of Decorator and Proxy Patterns
+    MonsterDAOInterface monsterDAO = new MonsterDAODecorator();
+
+    try{
+      monsterDAO.addMonster("");
+    } catch(MonsterException e){
+      System.err.println(e.getMessage());
+    }
+
+    try{
+      // DAO removes capitalized string and trailing whitespaces
+      System.out.println("Added with sucess: " + monsterDAO.addMonster("             DRAGON              "));
+    } catch(MonsterException e){
+      System.err.println(e.getMessage());
+    }
+
+    try{
+      // DAO removes capitalized string and trailing whitespaces and capitalize first letter
+      Monster dragon = monsterDAO.getMonster("      drAGon       "); 
+      System.out.println("Found on DB: " + dragon.getName());
+    } catch(MonsterException e){
+      System.err.println(e.getMessage());
+    }
   }
+  
 }
