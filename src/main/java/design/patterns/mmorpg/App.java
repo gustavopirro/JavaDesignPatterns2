@@ -15,6 +15,7 @@ public class App {
 
     System.out.println(player.getAccountType());
     System.out.println(player2.getAccountType());
+    System.out.println();
 
     //Implementation of Decorator and Proxy Patterns
     MonsterDAOInterface monsterDAO = new MonsterDAODecorator();
@@ -39,6 +40,14 @@ public class App {
     } catch(MonsterException e){
       System.err.println(e.getMessage());
     }
+
+    //Implementation of Fluent Interfaces Pattern
+    Monster troll = new Monster().nameIs("Troll").withType("Boss").onLevel(100);
+    System.out.println();
+    System.out.println("Name: " + troll);
+    System.out.println("Type: " + troll.getMonsterType());
+    System.out.println("Level: " + troll.getLevel());
+
   }
   
 }
