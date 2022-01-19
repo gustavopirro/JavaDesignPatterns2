@@ -27,11 +27,11 @@ public class Player {
         if(player != null){
             player.setName(name);
             player.setLevel(100);
-            player.setAccountType("Admnistrator");
+            player.setAccountType("Administrator");
     
             return player;
         }
-        return new Player(name, 100, "Admnistrator");
+        return new Player(name, 100, "Administrator");
     }
 
     public String getName() {
