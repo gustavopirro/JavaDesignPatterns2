@@ -61,6 +61,28 @@ public class App {
     f3.setCommand(new ShortcutCommand(skillReceptor, "Special Attack"));
     f3.action();
 
+    //Implementation of Flyweight Pattern
+    System.out.println();
+    GameMap map = new GameMap("Generic Map");
+    Monster witch = new Monster("Witch");
+    Monster dragon = new Monster("Dragon");
+
+    MonsterInstance witchInstance = new MonsterInstance(witch);
+    MonsterInstance witchInstance2 = new MonsterInstance(witch);
+    MonsterInstance dragonInstance = new MonsterInstance(dragon);
+
+    map.spawnMonster(witchInstance);
+    map.spawnMonster(witchInstance2);
+    map.spawnMonster(dragonInstance);
+
+    System.out.println("Map name: " + map.getMapname());
+    System.out.println("Map available monsters: " + map.getMonsters());
+    System.out.println("Monster instance list:");
+    System.out.println("Name - Coordinates");
+    for(MonsterInstance instance : map.getMonstersList().values())
+      System.out.println(instance);
+    
+
   }
   
 }
