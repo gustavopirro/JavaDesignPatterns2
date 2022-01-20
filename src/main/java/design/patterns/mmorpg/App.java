@@ -48,6 +48,19 @@ public class App {
     System.out.println("Type: " + troll.getMonsterType());
     System.out.println("Level: " + troll.getLevel());
 
+    //Implementation of Command Pattern
+    Receptor msgReceptor = new ReceptorMessage();
+    Receptor skillReceptor = new ReceptorSkill();
+    Shortcut f2 = new Shortcut("f2");
+    Shortcut f3 = new Shortcut("f3");
+
+    System.out.println();
+    f2.setCommand(new ShortcutCommand(msgReceptor, "Special Attack"));
+    f2.action();
+
+    f3.setCommand(new ShortcutCommand(skillReceptor, "Special Attack"));
+    f3.action();
+
   }
   
 }
