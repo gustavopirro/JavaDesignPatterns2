@@ -81,8 +81,40 @@ public class App {
     System.out.println("Name - Coordinates");
     for(MonsterInstance instance : map.getMonstersList().values())
       System.out.println(instance);
-    
 
-  }
-  
+    //Impementation of Facade Pattern
+    System.out.println();
+    DbFacadeDAO facadeDAO = new DbFacadeDAO();
+
+      //Find monster with facade
+    try{
+      System.out.println(facadeDAO.getMonster("Skeleton"));
+    } catch (MonsterException e){
+      System.err.println(e);
+    }
+
+      //Add monster with facade
+    facadeDAO.addMonster("Orc");
+    try{
+      System.out.println(facadeDAO.getMonster("Orc"));
+    } catch(MonsterException e){
+      System.err.println(e);
+    }
+
+      //Add monster with DAO Decorator and retrieve with facade
+    try{
+      new MonsterDAODecorator().addMonster("Blood Elf");
+      System.out.println(facadeDAO.getMonster("Blood elf"));
+    } catch(MonsterException e){
+      System.err.println(e);
+    }
+
+      //Try to find invalid input
+    try{
+      System.out.println(facadeDAO.getMonster("Invalid Input!"));
+    } catch(MonsterException e){
+      System.err.println(e);
+    }
+  } 
+
 }
