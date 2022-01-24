@@ -115,6 +115,19 @@ public class App {
     } catch(MonsterException e){
       System.err.println(e);
     }
+
+    //Implementation of Double Dispatch Pattern
+    System.out.println();
+    Role role = new Role();
+    Warrior warrior = new Warrior(150);
+    Mage mage = new Mage(150);
+
+    System.out.println("Warrior Base health modifier: " + warrior.getBaseHealth());
+    System.out.println("Warrior Final health modifier: " + warrior.create(role));
+    
+    System.out.println("Mage Base health modifier: " + mage.getBaseHealth());
+    System.out.println("Mage Final health modifier: " + mage.create(role));
+    
   } 
 
 }
